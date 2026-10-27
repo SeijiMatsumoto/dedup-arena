@@ -1,0 +1,145 @@
+# Contenders. `arena run` uses every entry with enabled: true unless --retrievers is given.
+# Composites (hybrid, rerank, agentic) reference other entries by name; those are built on
+# demand even when disabled. Everything goes through OpenRouter with one key.
+#
+# Text views: item = the source item's own title + text (what enable-ai embeds today),
+#             meta = extracted subject/version + headline, full = both.
+# price_in / price_out are USD per 1M tokens, used only if OpenRouter omits usage.cost.
+
+retrievers:
+  # --- Production baselines ----------------------------------------------------------------
+  - name: production-logged
+    kind: logged
+    note: Candidates enable-ai actually retrieved, read from its logs.
+
+  - name: production-replay
+    kind: production
+    model: google/gemini-embedding-2
+    dims: 1536
+    prefix: "task: clustering | query: "
+    doc_view: item
+    query_view: item
+    max_distance: 0.10
+    note: Production's candidate query re-implemented (subject identity OR cosine distance <= 0.10, top 5).
+
+  # --- Lexical -----------------------------------------------------------------------------
+  - name: bm25
+    kind: bm25
+
+  # --- Dense: embedding models -------------------------------------------------------------
+  # Same text as production, no cutoff: isolates how much the 0.10 cutoff costs.
+  - name: gemini-emb-2
+    kind: dense
+    model: google/gemini-embedding-2
+    dims: 1536
+    prefix: "task: clustering | query: "
+    doc_view: item
+    query_view: item
+
+  # Same model, different text to embed.
+  - name: gemini-emb-2-full
+    kind: dense
+    model: google/gemini-embedding-2
+    dims: 1536
+    prefix: "task: clustering | query: "
+
+  - name: gemini-emb-2-meta
+    kind: dense
+    model: google/gemini-embedding-2
+    dims: 1536
+    prefix: "task: clustering | query: "
+    doc_view: meta
+    query_view: meta
+
+  - name: openai-3-small
+    kind: dense
+    model: openai/text-embedding-3-small
+
+  - name: openai-3-large
+    kind: dense
+    model: openai/text-embedding-3-large
+
+  - name: voyage-4
+    kind: dense
+    model: voyageai/voyage-4
+
+  - name: voyage-4-lite
+    kind: dense
+    model: voyageai/voyage-4-lite
+
+  - name: qwen3-embed-8b
+    kind: dense
+    model: qwen/qwen3-embedding-8b
+
+  - name: bge-m3
+    kind: dense
+    model: baai/bge-m3
+
+  # --- Hybrid (reciprocal rank fusion) -------------------------------------------------------
+  - name: hybrid-gemini
+    kind: hybrid
+    components: [bm25, gemini-emb-2-full]
+
+  - name: hybrid-voyage
+    kind: hybrid
+    components: [bm25, voyage-4]
+
+  # --- Rerank: hybrid top 25 reordered by a cross-encoder ----------------------------------
+  - name: hybrid+cohere-4-fast
+    kind: rerank
+    base: hybrid-gemini
+    model: cohere/rerank-4-fast
+
+  - name: hybrid+cohere-4-pro
+    kind: rerank
+    base: hybrid-gemini
+    model: cohere/rerank-4-pro
+    enabled: false  # ~$1.20 per full run; enable to compare with the fast tier
+
+  - name: hybrid+voyage-rerank-2.5
+    kind: rerank
+    base: hybrid-gemini
+    model: voyageai/rerank-2.5
+
+  # --- Long context: no retrieval, every eligible story in one prompt ----------------------
+  # Each prompt holds a few hundred story cards (~25-40k tokens).
+  - name: lc-haiku-5.5
+    kind: long_context
+    model: anthropic/claude-haiku-5.5
+    price_in: 0.10
+    price_out: 0.50
+
+  - name: lc-gpt-6-luna
+    kind: long_context
+    model: openai/gpt-6-luna
+    price_in: 0.10
+    price_out: 0.50
+    rpm: 18
+    extra: {reasoning: {effort: minimal}}
+
+  - name: lc-gemini-3.5-flash-lite
+    kind: long_context
+    model: google/gemini-3.5-flash-lite
+    price_in: 0.30
+    price_out: 2.50
+    enabled: false  # ~$1.70 per full run (3x Haiku's input price)
+
+  # --- Agentic: an LLM with a search tool ---------------------------------------------------
+  - name: agent-haiku-5.5
+    kind: agentic
+    model: anthropic/claude-haiku-5.5
+    tool: hybrid-gemini
+    max_rounds: 3
+    price_in: 0.10
+    price_out: 0.50
+
+  # --- Offline -------------------------------------------------------------------------------
+  - name: mock-good
+    kind: mock
+    accuracy: 0.9
+    enabled: false
+
+  - name: mock-weak
+    kind: mock
+    accuracy: 0.5
+    enabled: false

@@ -1,0 +1,290 @@
+# Disputed items (judge vs production), decided by Gemini CLI from review.md under the
+# task.yaml policy, then spot-checked. relevant: [] means the item starts a new story.
+
+q_10c39c21:
+  relevant: []
+  note: The incoming release is for langgraph-sdk 0.4.6, whereas s_d7c848c6 is the core langgraph library v1.2.13, which is a distinct package.
+
+q_e37e854e:
+  relevant: []
+  note: This post describes a delivery orchestration billing system case study, which is a separate project from the healthcare rebuild in s_9974a7d6.
+
+q_4154886a:
+  relevant: [s_649b24b8]
+  note: langgraph-cli 0.4.33 is a patch release in the same 0.4 minor series as langgraph-cli 0.4.32 (s_649b24b8).
+
+q_0692b792:
+  relevant: [s_94053002]
+  note: OpenAI Python SDK v3.26.1 is a patch release of minor version 3.26, matching v3.26.0 (s_94053002).
+
+q_67088ef8:
+  relevant: [s_1187f2ce, s_b6844334]
+  note: Anthropic's official announcement of Claude Haiku 5.5 shares a story with its same-day Cursor integration (s_1187f2ce) and Python SDK release (s_b6844334).
+
+q_0c420b50:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: AWS availability of Claude Haiku 5.5 is a routine integration of the Haiku 5.5 launch covered by s_663af3c7, s_1187f2ce, and s_b6844334.
+
+q_3bfe3777:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: This AINews roundup covers the Claude Haiku 5.5 release and pricing, matching duplicate stories s_1187f2ce, s_663af3c7, and s_b6844334.
+
+q_a9a09609:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: Platform documentation for Claude Haiku 5.5 details the launch and capabilities covered by s_1187f2ce, s_663af3c7, and s_b6844334.
+
+q_000395a8:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: Official Reddit post announcing Claude Haiku 5.5 covers the launch represented by s_1187f2ce, s_663af3c7, and s_b6844334.
+
+q_0312c55b:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: BenchLM's benchmark evaluation and pricing profile on launch day covers the Claude Haiku 5.5 release (s_1187f2ce, s_663af3c7, s_b6844334).
+
+q_a26688ea:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: Media coverage reporting the launch of Claude Haiku 5.5 belongs to the same story as s_1187f2ce, s_663af3c7, and s_b6844334.
+
+q_14fcb514:
+  relevant: [s_a3cd94fb]
+  note: Perfect Corp's integration of Vidu Q4 Preview into YouCam apps is a routine integration of the Vidu Q4 Preview launch (s_a3cd94fb).
+
+q_29ab3364:
+  relevant: [s_a3cd94fb]
+  note: Syndicated press release of Perfect Corp integrating Vidu Q4 Preview represents a routine integration of the Vidu Q4 Preview launch (s_a3cd94fb).
+
+q_278b3577:
+  relevant: []
+  note: This post launches Cogent's Attack Path Analysis approach using the July Hugging Face incident only as background context, so it does not match the HF incident story (s_7817901a).
+
+q_c0e39fdb:
+  relevant: []
+  note: This weekly roundup covers the October 7 global rollout of GPT-6 with Intelligent UI alongside unrelated news, which does not match the earlier September 3 GPT-6 Astra launch (s_32bdfac3) or the startup guide (s_c3ecdaa2).
+
+q_577c940b:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: Covers the October 7 Claude Haiku 5.5 release and 75% price cut, matching launch stories s_1187f2ce, s_663af3c7, and s_b6844334.
+
+q_78e78282:
+  relevant: [s_ea648d07]
+  note: The Reuters article reports the same Google Cloud announcement of the Gemini agent for enterprise workflows as s_ea648d07.
+
+q_c73778c9:
+  relevant: [s_33fa881e, s_bf783c14, s_e2d0c9ea]
+  note: This article covers the Claude Opus 5.5 release, which shares a story with its routine integrations and benchmark reactions (s_33fa881e, s_bf783c14, s_e2d0c9ea).
+
+q_db70a095:
+  relevant: [s_6b4164a5, s_94053002]
+  note: The Decisions API transition to public beta matches both its preview announcement (s_6b4164a5) and the SDK integration (s_94053002).
+
+q_9292b437:
+  relevant: [s_6b4164a5, s_94053002]
+  note: Coverage of OpenAI Decisions API moving to public beta matches the initial preview launch (s_6b4164a5) and its Python SDK support (s_94053002).
+
+q_c8ba0a57:
+  relevant: []
+  note: The text describes an acquisition by Hightouch and Anthropic eval security, with no mention or coverage of Cloudflare's Clef-omni release (s_cc43f84a).
+
+q_42dcb495:
+  relevant: [s_1187f2ce, s_663af3c7, s_b6844334]
+  note: Platform availability of Claude Haiku 5.5 on BAI_AGI is a routine integration covering the Claude Haiku 5.5 launch (s_1187f2ce, s_663af3c7, s_b6844334).
+
+q_4b0fe1f4:
+  relevant: [s_7817901a]
+  note: The CACM article reports the July 2026 OpenAI evaluation container breakout at Hugging Face, matching the Hugging Face breach story s_7817901a, while s_40f40788 is a separate product launch.
+
+q_db491ed9:
+  relevant: []
+  note: This post is a general user review of the Claude Code tool and its application features after six months, rather than a report on the Claude Opus 5.5 release.
+
+q_c339d453:
+  relevant: [s_9945c3bc]
+  note: Covers the public preview launch of Mistral Large 4 (Le Chonk), matching the preview launch story s_9945c3bc.
+
+q_2b988ff4:
+  relevant: []
+  note: The article discusses general agent orchestration trends and OpenAI dots with no discussion of Microsoft-Decision-1 (s_7a37fbcf), making a match purely label-based and forced.
+
+q_527bd000:
+  relevant: []
+  note: The article is an industry analysis focusing on Reflection AI's Beam release and open-weight policy trends, which is distinct from the Mistral Large 4 preview releases (s_9945c3bc, s_d44e5fa8).
+
+q_ffd57abd:
+  relevant: []
+  note: This commentary analyzes the Qwen 4 Max announcement against GPT-6.1 Sol weeks after Sol launched, constituting a distinct comparison rather than coverage of the Sol release (s_27e1cb00).
+
+q_9dddc25a:
+  relevant: [s_2f6f2af6]
+  note: The public beta announcement for Claude Managed Agents dynamic workflows matches its routine SDK integration in v1.13.0 (s_2f6f2af6).
+
+q_61d11d9f:
+  relevant: [s_9945c3bc, s_d44e5fa8]
+  note: This post is a hands-on benchmark evaluation of the Mistral Large 4 Preview (Le Chonk), matching duplicate preview stories s_9945c3bc and s_d44e5fa8.
+
+q_696d2c90:
+  relevant: []
+  note: This post announces Factory AI's Environments launch, which is completely distinct from OpenAI's hosted environment SDK releases (s_561a1808, s_e20559d6).
+
+q_318f2ac9:
+  relevant: [s_336a7474]
+  note: Both articles cover the findings of Epoch AI's October 7, 2026 InnovationEval benchmark study on frontier agents (s_336a7474).
+
+q_24d06796:
+  relevant: []
+  note: Meta's launch of the Muse Wonder and Muse Wonder Full models on October 12 is a new development not covered by any existing story in the pool.
+
+q_0e72d4a8:
+  relevant: []
+  note: The article covers the launch of Meta's Muse Wonder models, but no existing story in its candidate pool covers this release.
+
+q_d38afe22:
+  relevant: []
+  note: This post shares metrics and ROI reflections from an enterprise RCM agent project, which is distinct from the general coding architecture post in s_732647ea.
+
+q_b01b74e3:
+  relevant: [s_f1c7a7ad]
+  note: Google Gen AI Python SDK v2.30.1 is a patch release belonging to the same 2.30 minor version as v2.30.0 (s_f1c7a7ad).
+
+q_a66f343f:
+  relevant: [s_649b24b8, s_d9bcd67f]
+  note: langgraph-cli 0.4.34 is a patch release in the 0.4 minor line, matching previous 0.4.x patch releases s_649b24b8 and s_d9bcd67f.
+
+q_6fc8445f:
+  relevant: [s_540e56d9, s_627f508d]
+  note: Developer release article for Gemini 4 Argon shares a story with the official rollout post (s_540e56d9) and same-day benchmark reaction (s_627f508d).
+
+q_40c7dec3:
+  relevant: [s_540e56d9]
+  note: Google Gen AI Python SDK v2.31.0 adds gemini-4-argon, serving as a routine integration of the Gemini 4 Argon launch (s_540e56d9).
+
+q_616fa086:
+  relevant: []
+  note: This arXiv paper is an independent academic forensic recreation and analysis of CVE-2026-65616, constituting a distinct paper development rather than news coverage of the breach incident (s_4d404a9a, s_7817901a).
+
+q_c4e2c0e8:
+  relevant: []
+  note: The newsletter is a general how-to guide on detecting when AI tools change models under users and does not cover the GPT-6 launch announcement (s_873b5dee).
+
+q_7ce73ede:
+  relevant: []
+  note: The post provides general organizational advice for operating partners, sharing only the AI Velocity Pod service name with the healthcare case study in s_9974a7d6.
+
+q_360d46b4:
+  relevant: []
+  note: The post announces a Canvas PDF-to-interactive-app feature utilizing Argon, which is a separate product capability from the core Gemini 4 Argon model release (s_540e56d9).
+
+q_1c96e2cc:
+  relevant: [s_d7c848c6]
+  note: Core langgraph 1.2.15 shares the 1.2 patch series with 1.2.13, while langgraph-sdk is a separate package.
+
+q_3bda9a01:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7]
+  note: CLI 0.4.35 shares the 0.4 minor series with CLI 0.4.32, 0.4.33 and 0.4.34.
+
+q_08d5acc7:
+  relevant: [s_3aef3fcd]
+  note: The roundup explicitly reports the Muse Spark Open release even though its headline emphasizes interpretability.
+
+q_1fb46736:
+  relevant: [s_d7c848c6, s_0c0da1da]
+  note: Core langgraph 1.2.16 shares the 1.2 patch series with 1.2.13 and includes the Postgres pruning capability covered by s_0c0da1da.
+
+q_5901ed28:
+  relevant: [s_4a4c1b1d]
+  note: langgraph-sdk 0.4.8 is a patch in the same SDK 0.4 minor series as 0.4.7.
+
+q_b3cb630b:
+  relevant: [s_24d572e3]
+  note: Both texts cover the Kling 4.0 launch with 30-second scenes and keyframe control, including its routine Runware integration.
+
+q_e9a52529:
+  relevant: [s_fbbfbe2f]
+  note: Both texts describe Glimpse revisiting images and video frames while reasoning, identifying the same model release.
+
+q_8c354741:
+  relevant: [s_76663d6a]
+  note: Both articles cover the jointly released Nemotron family including the 120B Super VL and smaller local-agent models.
+
+q_268b9142:
+  relevant: []
+  note: The personal bot and task-management setup built on Executor is a different project from the company-brain inbox in s_4362a841.
+
+q_fe142b67:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0]
+  note: CLI 0.4.36 belongs to the same CLI 0.4 patch series as all four earlier CLI releases.
+
+q_f4234930:
+  relevant: [s_d8432671]
+  note: OpenAI Python SDK 3.35.1 is a patch of the incoming 3.35.0 minor release.
+
+q_0fa60fd1:
+  relevant: [s_76663d6a, s_cd181870]
+  note: The brief reports the same three-model Nemotron launch for local enterprise agents covered by both candidate articles.
+
+q_cfb5cfa9:
+  relevant: [s_89ddbfe0]
+  note: Both posts explain the execution boundaries and autonomy design of the same Velocity Core software-factory project.
+
+q_71dd807c:
+  relevant: [s_2df3b34b]
+  note: Both posts describe REA enabling Claude to trace compiled application features and rebuild them with evidence.
+
+q_f4c980ac:
+  relevant: [s_540e56d9]
+  note: The article compares the newly released Gemini 4 Argon with KUT engines, making it benchmark commentary about the Argon release.
+
+q_6cd3f6a2:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0, s_92fc43ea]
+  note: CLI 0.4.37 shares the CLI 0.4 minor series with all five earlier CLI patch releases.
+
+q_efbf84c2:
+  relevant: [s_c40a1477]
+  note: The pricing article analyzes launch rates and the same 23-times-cheaper claim for Laminar flow-1.
+
+q_806e7c8e:
+  relevant: [s_c40a1477, s_f68211d9]
+  note: Both candidates cover the same flow-1 launch and trace-error detection cost claims reported in the incoming article.
+
+q_0c6c7ea8:
+  relevant: [s_ff579b04]
+  note: Both texts report DeepSeek open-sourcing its production DeepInfer inference framework on October 20.
+
+q_d03069f8:
+  relevant: [s_ff579b04, s_5e9fa8b7]
+  note: All three texts cover the same DeepInfer open-source framework release supporting DeepSeek V4.1 Flash.
+
+q_351c4724:
+  relevant: [s_ff579b04, s_5e9fa8b7]
+  note: The article explicitly analyzes the public deepseekai/deepinfer repository release covered by both candidates, despite differing technical claims.
+
+q_c0b513fa:
+  relevant: []
+  note: The delivery orchestration rebuild billing shippers and paying couriers is distinct from the healthcare rebuild and other projects shown.
+
+q_9da70996:
+  relevant: [s_afa200c7]
+  note: The Codex skill checks exposure to the same PHP vulnerabilities and directly quotes their disclosure announcement.
+
+q_33e73192:
+  relevant: [s_53d11e1d]
+  note: Jira delegations expose the same hand-work-to-Droid capability announced as Delegations through a routine integration.
+
+q_83a121e9:
+  relevant: [s_afa200c7, s_94854a04]
+  note: The reaction concerns the disclosed critical PHP vulnerabilities also covered by the discovery announcement and its Codex checking skill.
+
+q_530be04d:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0, s_92fc43ea, s_f646208a]
+  note: CLI 0.4.40 shares the CLI 0.4 minor series with all six candidate CLI patch releases.
+
+q_111e92a3:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0, s_92fc43ea, s_f646208a, s_2f460367]
+  note: CLI 0.4.39 shares the CLI 0.4 minor series with the six earlier patches and 0.4.40.
+
+q_36bcb706:
+  relevant: [s_d7c848c6, s_608f845c]
+  note: Core langgraph 1.2.18 is a patch in the same 1.2 minor series as 1.2.13 and 1.2.16.
+
+q_9c2776f4:
+  relevant: [s_4a4c1b1d, s_3e7fd077]
+  note: langgraph-sdk 0.4.10 shares the SDK 0.4 minor series with 0.4.7 and 0.4.8 rather than the core or CLI packages.

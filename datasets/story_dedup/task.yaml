@@ -1,0 +1,47 @@
+# One public grouping policy, used by the label judges, the decision model and the LLM
+# retrievers alike, so every method is graded against the same rule. It restates the rules
+# enable-ai's matcher follows, in plain terms.
+name: story_dedup
+description: Find the existing Story (if any) that an incoming post, article or release covers.
+use_case: 'News/feed dedup: attach new evidence to the right story, or start a new one'
+source: Exported from enable-ai production. Corpus = Stories as first created; queries = items that went
+  through story matching.
+definition: |
+  Two items belong to the same story when they cover the same development: one
+  announcement, release, incident, paper or experiment. Sharing a company, product
+  or model name is not enough.
+
+  Same story:
+  - Different coverage of one announcement, even when articles stress different
+    details (pricing vs. benchmarks) or different tiers of a jointly launched family.
+  - Reactions, hands-on experiences, cost comparisons and how-to posts about that
+    release.
+  - A launch and a routine integration that exposes the same capability, in either
+    order.
+  - A capability moving from limited preview to public beta.
+  - Patch releases (x.y.z) of the same SDK minor version.
+
+  Different stories:
+  - A later or successor model, or a different version of the same product.
+  - A separately announced product from the same company.
+  - Actual price or access changes, outages and security incidents, each as its
+    own development.
+  - Different projects or experiments that happen to use the same tool.
+
+  Judge by the underlying event, not by headline wording or event labels such as
+  "availability" vs. "feature_launch". If nothing covers the same development,
+  the answer is none; do not force a match.
+pool:
+  retrievers:
+  - bm25
+  - gemini-emb-2
+  - openai-3-large
+  - voyage-4
+  - qwen3-embed-8b
+  depth: 8
+  judge_rpm:
+    anthropic/claude-sonnet-5.5: 18
+# One judge keeps labeling at ~$5; production's own decision is the second opinion and every
+# disagreement is reviewed. Add a second judge (e.g. openai/gpt-6.1-sol) for a cross-vendor check.
+judges:
+- anthropic/claude-sonnet-5.5

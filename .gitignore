@@ -1,0 +1,12 @@
+.env
+.cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+__pycache__/
+*.pyc
+reports/*.json
+reports/*.html
+private/
+# Agent label sheets are regenerable with `arena label --sheet`
+datasets/*/agent/part-*.md

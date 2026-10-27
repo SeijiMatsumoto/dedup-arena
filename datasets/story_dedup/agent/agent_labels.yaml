@@ -1,0 +1,785 @@
+labeler: gemini-cli
+
+q_5ab32a24:
+  relevant: []
+  note: ARC-AGI-3 verified benchmark results for Gemini 4 Argon is a distinct benchmark evaluation development not covered by existing stories.
+
+q_5e19c53a:
+  relevant: []
+  note: Pydantic AI v2.57.0 is a new minor release version, distinct from candidate stories covering earlier 2.56.0, 2.55.0, or 2.54.0 releases.
+
+q_1c96e2cc:
+  relevant: [s_d7c848c6]
+  note: langgraph 1.2.15 is a patch release in the 1.2 minor series, matching langgraph 1.2.13 (s_d7c848c6).
+
+q_3bda9a01:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7]
+  note: langgraph-cli 0.4.35 is a patch release in the 0.4 minor series, matching earlier 0.4.x patch releases s_649b24b8, s_d9bcd67f, and s_9d5378a7.
+
+q_da5ce3f4:
+  relevant: []
+  note: Anthropic Python SDK v1.15.0 is a new minor version release, distinct from candidate stories covering earlier minor versions up to 1.14.0.
+
+q_1de0ea9c:
+  relevant: []
+  note: The article is an in-depth journalistic analysis by Visual Studio Magazine on Microsoft and GitHub agent controls, representing its own reporting development.
+
+q_97cd3527:
+  relevant: []
+  note: The article is Dan Shipper's narrative history essay 'How Codex Happened', distinct from specific Codex product launch announcements.
+
+q_f10dde19:
+  relevant: []
+  note: CloudBees CI MCP Router launch is a new product feature not covered by any candidate story.
+
+q_b9fe0c5a:
+  relevant: []
+  note: This post reports on an academic study evaluating AI agents on 15 open scientific problems, which is an independent research development.
+
+q_53cfca57:
+  relevant: []
+  note: Nscale's launch of Dedicated Inference is a new product offering with no matching candidate stories in the pool.
+
+q_9c1a4b77:
+  relevant: []
+  note: Apple Machine Learning Research article announces distributed MLX inference with RDMA on Mac Studio, which is a new research development.
+
+q_19a848f8:
+  relevant: []
+  note: REKI is a new vision-language-action model paper/release not covered by any story in the pool.
+
+q_08d5acc7:
+  relevant: []
+  note: The article is a multi-topic newsletter whose main story is mechanistic interpretability/polysemanticity rather than Muse Spark Open (s_3aef3fcd).
+
+q_9a3ed480:
+  relevant: []
+  note: Voxel51's launch of Unified Data Platform 3.0 is a new product release not covered by candidate stories.
+
+q_0b93196c:
+  relevant: []
+  note: Perplexity open-sourcing SPACE is a new sandbox platform release not covered by candidate stories.
+
+q_75958e3f:
+  relevant: []
+  note: Anthropic STEM Fellows Program research on quantum circuit design with Claude Mythos 5 is an independent research announcement.
+
+q_a93756c9:
+  relevant: []
+  note: The GA launch of Delegations for Droid is a separately announced feature, distinct from Remote Control (s_d53d2f98).
+
+q_81b41826:
+  relevant: [s_734768d3]
+  note: LimestoneHQ's post details their software factory architecture, continuing the agentic development lifecycle initiative introduced in s_734768d3.
+
+q_4c5035a0:
+  relevant: []
+  note: The post describes the Glimpse video exploration model, which is a distinct product release not covered in the candidate pool.
+
+q_1f03bd8b:
+  relevant: []
+  note: An open-source user mod for Claude Code UX is an independent user project, distinct from core Claude Code releases.
+
+q_fa96d45c:
+  relevant: []
+  note: This post describes internal software maintenance backlog workflows with Codex at OpenAI, not covered by any candidate story.
+
+q_bc3e4a3b:
+  relevant: []
+  note: The upgrade of GPT-6 Astra Pro in ChatGPT with multi-agent parallel execution is a distinct product update not in the candidate pool.
+
+q_b7369e8f:
+  relevant: []
+  note: The report by ClaudeDevs on Anthropic's internal code review process where Claude writes 90% of Claude Code's code is not in the candidate pool.
+
+q_a91adfd5:
+  relevant: [s_bc125f03]
+  note: This post directly quotes and summarizes Anthropic's STEM Fellows research on Claude Mythos 5 designing quantum circuits from s_bc125f03.
+
+q_cde39087:
+  relevant: []
+  note: DeepSeek-V4.1-Flash-1017 is a new checkpoint and model release not covered by candidate stories.
+
+q_1c24ca05:
+  relevant: [s_7ec39c29]
+  note: This post evaluates and compares Vivix W1's real-time video generation and $0.003/sec API pricing, covering the launch in s_7ec39c29.
+
+q_a4e7cc3f:
+  relevant: []
+  note: The post covers the launch and approach of the Termix AI SDK, which is not present in candidate stories.
+
+q_bd459908:
+  relevant: []
+  note: The post reports on the paper and benchmark results for Iris-3B, a new open image model not covered in candidate stories.
+
+q_0a12617a:
+  relevant: []
+  note: The announcement of Xiaomi's MiMo-V2.6 model series on B.AI is a new development with no candidate stories.
+
+q_0b4c76cd:
+  relevant: []
+  note: GrowTendril is a new product launch for an AI growth operator not present in the candidate pool.
+
+q_1fb46736:
+  relevant: [s_d7c848c6]
+  note: langgraph 1.2.16 is a patch release in the 1.2 minor series, matching langgraph 1.2.13 (s_d7c848c6).
+
+q_5901ed28:
+  relevant: [s_4a4c1b1d]
+  note: langgraph-sdk 0.4.8 is a patch release in the 0.4 minor series, matching langgraph-sdk 0.4.7 (s_4a4c1b1d).
+
+q_b6d3857a:
+  relevant: []
+  note: OpenAI Python SDK v3.33.0 is a new minor release version, distinct from earlier minor versions in the pool.
+
+q_5a446e00:
+  relevant: []
+  note: OpenAI Python SDK v3.32.0 is a new minor release version, distinct from versions 3.31.0 and 3.33.0.
+
+q_b3cb630b:
+  relevant: [s_24d572e3]
+  note: This article covers the release of Kling 4.0 with 30-second scenes and keyframes, matching story s_24d572e3.
+
+q_4cdd03e1:
+  relevant: []
+  note: CompMat-Bench is a new benchmark paper for computational materials science agents with no candidate story.
+
+q_3f32b1e9:
+  relevant: []
+  note: Together AI docs changelog adding project visibility levels is a distinct product feature with no candidate story.
+
+q_fb33e786:
+  relevant: []
+  note: Flux 3 Image Klein from Black Forest Labs is a new open-weight image model release not covered by candidate stories.
+
+q_e9a52529:
+  relevant: [s_fbbfbe2f]
+  note: The Superpower Daily article covers Elorian's launch of Glimpse, matching the launch coverage in s_fbbfbe2f.
+
+q_d154ca97:
+  relevant: []
+  note: This post reports on Mercor's study on benchmark coverage of American working hours, a distinct research development from earlier benchmarks.
+
+q_c049b9b3:
+  relevant: []
+  note: The AWS blog post on an evaluation framework with Bedrock AgentCore is a separate announcement from the gateway architecture discussion in s_c56ac931.
+
+q_657806a7:
+  relevant: []
+  note: Natura-1 is a newly unveiled foundation model for the physical world with no matching story in the candidate pool.
+
+q_270e1d22:
+  relevant: []
+  note: This is Plotly's own comparative benchmarking study across multiple open and closed models, not dedicated coverage of any single candidate release.
+
+q_bc8796c2:
+  relevant: []
+  note: AgentiLoop's Agent! v0.0.5 cross-platform CLI release is not covered by any candidate story in the pool.
+
+q_8c811233:
+  relevant: []
+  note: TechRadar's report on GoDaddy unlocking email, hosting, and commerce for AI agents is a new development not present in candidate stories.
+
+q_b3b2bfae:
+  relevant: []
+  note: Nvidia's launch of three Nemotron AI models (including Nemotron 3.5 Super VL) is a new release not covered by any candidate story in the pool.
+
+q_e8a528ff:
+  relevant: []
+  note: OpenGCUA Labs unveiling a fully open-source generalist computer-use agent stack is a new development with no candidate story in the pool.
+
+q_8c354741:
+  relevant: [s_76663d6a]
+  note: This article covers Nvidia's release of the Nemotron 3.5 family (including Nemotron 3.5 Super VL), matching story s_76663d6a.
+
+q_169bb1ff:
+  relevant: []
+  note: The U.S. Department of Energy releasing Genesis Agent Skills is a new government research release not present in candidate stories.
+
+q_4c54b8cb:
+  relevant: [s_16762381]
+  note: This Morningstar article covers Nature Will's launch of the Natura-1 foundation model for robotics, matching story s_16762381.
+
+q_268b9142:
+  relevant: []
+  note: This post describes a user's personal agent and workflow setup built on Executor, which is an independent project.
+
+q_d4756e7d:
+  relevant: []
+  note: An anecdotal post detailing an internal audit of GitHub Copilot usage at a PE-backed firm is a separate topic from GitHub Copilot product updates.
+
+q_815fa9a4:
+  relevant: []
+  note: HeartFlowAI's launch of HFAI Cloud is a new platform announcement not covered in the candidate pool.
+
+q_fd8e2b0e:
+  relevant: []
+  note: langgraph-checkpoint 4.3.0 is a new minor release for the checkpoint package, with no matching story in the pool.
+
+q_fe142b67:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0]
+  note: langgraph-cli 0.4.36 is a patch release in the 0.4 minor series, matching earlier 0.4.x patch releases s_649b24b8, s_d9bcd67f, s_9d5378a7, and s_0375a4f0.
+
+q_ac3c865d:
+  relevant: []
+  note: OpenAI Python SDK v3.35.1 is a new minor/patch series with no candidate story in its pool.
+
+q_f4234930:
+  relevant: [s_d8432671]
+  note: OpenAI Python SDK v3.35.0 is in the 3.35 minor series, matching patch release v3.35.1 (s_d8432671).
+
+q_dbf4fc09:
+  relevant: []
+  note: Google's global public launch of SynthID Detector for AI media verification is a new product launch not covered by candidate stories.
+
+q_d1d3466c:
+  relevant: []
+  note: Taste-Bench is a new benchmark paper by Microsoft and CityU evaluating agent judgment with no candidate story in the pool.
+
+q_cae8b690:
+  relevant: [s_2d524438]
+  note: This article reports on Microsoft and CityU's Taste-Bench benchmark, matching story s_2d524438.
+
+q_0fa60fd1:
+  relevant: [s_76663d6a, s_cd181870]
+  note: This news brief's lead story is Nvidia's launch of three open Nemotron models for local AI agents, matching duplicate stories s_76663d6a and s_cd181870.
+
+q_a3ce605c:
+  relevant: []
+  note: ServiceNow AI Control Tower is a new enterprise agent governance platform announcement not covered in the candidate pool.
+
+q_2608ffbe:
+  relevant: []
+  note: Intel Inference Microservices optimizing Xeon processors for local model inference is a new hardware serving development not present in candidate stories.
+
+q_86b37afe:
+  relevant: [s_d5f90221]
+  note: This is theCUBE Research's edition of David Vellante's analysis of ServiceNow AI Control Tower, matching story s_d5f90221.
+
+q_a5b1a965:
+  relevant: []
+  note: Google Research's public launch of Deep Review for verifying technical documents is a new development with no matching candidate story.
+
+q_3e9badc7:
+  relevant: []
+  note: This post is a practitioner checklist for automating operations workflows with agents, not covering any candidate story.
+
+q_c4225423:
+  relevant: []
+  note: Velocity Core introducing a tiered autonomy model for software agents is a new architecture post not covered in the candidate pool.
+
+q_cfb5cfa9:
+  relevant: [s_89ddbfe0]
+  note: This post continues the description of the Velocity Core architecture and execution rules introduced in story s_89ddbfe0.
+
+q_4b352f78:
+  relevant: []
+  note: REA (Reverse Engineer Anything) integration with Claude Code for feature tracing and reconstruction is a new tool capability not covered in the pool.
+
+q_43fdaefb:
+  relevant: []
+  note: Claus Network integrating IMD agents for smart contract reviews is a new development not present in candidate stories.
+
+q_71dd807c:
+  relevant: [s_2df3b34b]
+  note: This post describes REA (Reverse Engineer Anything), the MCP decompiler bridge for Claude covered in story s_2df3b34b.
+
+q_82563e04:
+  relevant: [s_540e56d9]
+  note: Google's official announcement of Gemini 4 Argon global availability matches the launch story s_540e56d9.
+
+q_504d0258:
+  relevant: []
+  note: OpenAI Python SDK v3.34.0 is a distinct minor release with no 3.34.x candidate in the pool.
+
+q_b8896183:
+  relevant: []
+  note: This paper on Adaptive Multi-Token Prediction is a new research announcement not covered by any candidate story.
+
+q_3deb2979:
+  relevant: []
+  note: The HeRE Hebrew Relation Extraction benchmark is a new research release not present in the candidate stories.
+
+q_2cf0d00c:
+  relevant: []
+  note: Samsara's launch of Agent Studio is a new product announcement not present in its candidate pool.
+
+q_f7e0bf7d:
+  relevant: []
+  note: This forensic study on deepfake-detection platforms is a new research evaluation not covered in the candidate pool.
+
+q_92493b59:
+  relevant: []
+  note: Birla AI Labs' launch of the Yug-1 time series foundation model is a new release not present in the candidate stories.
+
+q_0b49f0d0:
+  relevant: [s_540e56d9]
+  note: This article covers Google's October 13 global rollout of Gemini 4 Argon to subscribers, matching the launch story s_540e56d9.
+
+q_1ad9814a:
+  relevant: []
+  note: This talk introduces PagerDuty's H.I.R.E. evaluation pipeline for AI agents, a new development not present in the candidate stories.
+
+q_10aa4c20:
+  relevant: []
+  note: BrowserBash testing for Zendesk agent workspaces is a new tool tutorial not covered by any candidate story.
+
+q_f7df2892:
+  relevant: []
+  note: STAFT is a new research framework for forensic triage of AI agent incidents, with no candidate story covering it.
+
+q_f4c980ac:
+  relevant: []
+  note: This post presents an independent benchmark audit comparing Gemini 4 Argon against the KUT Engine Family, representing a separate evaluation.
+
+q_73a8228c:
+  relevant: []
+  note: This post reports on a new cyber intrusion incident where hackers used AI agents against 100+ companies, not covered by any candidate story.
+
+q_6eda9fa3:
+  relevant: []
+  note: The technical report announces Muse Glimmer, a new 30B open-weight model distinct from other Muse releases in the pool.
+
+q_6227dee9:
+  relevant: []
+  note: This post announces the technical details of the Prometheus supercluster infrastructure, which is a distinct development from the Muse model releases.
+
+q_d4c360be:
+  relevant: [s_627f508d]
+  note: This post reports new benchmark results and model behavior on CrusaderBench, matching the benchmark story s_627f508d.
+
+q_52470acb:
+  relevant: []
+  note: This post discusses the release of SKY-001 CAD engineering world model, a new development not present in the candidate stories.
+
+q_6320ac02:
+  relevant: []
+  note: ValsAI's cybersecurity benchmark test comparing DeepSeek V4.1 Flash against Sol is an independent experiment not covered by the model release stories.
+
+q_ee0218ee:
+  relevant: []
+  note: This post announces agent support on the say_gm_ LLM gateway on Bittensor, a new platform feature not present in candidate stories.
+
+q_a32a6d11:
+  relevant: []
+  note: This post critiques xAI's launch of its computer-using Grok agent, a new product launch not covered by candidate stories.
+
+q_b3a5eb79:
+  relevant: []
+  note: This post introduces a multi-agent serving recipe combining Qwen3.8-Flash-Next and MiniCPM-V on a DGX Spark, which is an independent practitioner setup.
+
+q_e1b8dbeb:
+  relevant: []
+  note: The launch of Zap!, an autorouter tool for PCB hardware design, is a new product announcement not present in candidate stories.
+
+q_3faeb354:
+  relevant: []
+  note: Pydantic AI v2.58.0 is a new minor release with no 2.58.x candidate present in the pool.
+
+q_10731144:
+  relevant: []
+  note: Pydantic AI v1.107.8 is a maintenance release for the v1 branch, which constitutes a different release from v2.58.0 and earlier v1 patches.
+
+q_6cd3f6a2:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0, s_92fc43ea]
+  note: langgraph-cli 0.4.37 is a patch release in the 0.4 minor series, matching earlier 0.4.x patch releases s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0, and s_92fc43ea.
+
+q_173bc7d5:
+  relevant: []
+  note: fal's launch of FLUX 3 Max is a new video model release not covered by any candidate story.
+
+q_8712188c:
+  relevant: []
+  note: Magai's feature update adding ElevenLabs audio and unlimited generation is a new announcement not present in candidate stories.
+
+q_ed0cfe65:
+  relevant: [s_8a0ddc02]
+  note: This VentureBeat article covers fal's launch of FLUX 3 Max, matching the announcement story s_8a0ddc02.
+
+q_2a7aa171:
+  relevant: [s_954a2248]
+  note: This syndicated press release covers Magai adding ElevenLabs audio and unlimited generation models, matching story s_954a2248.
+
+q_bea147b7:
+  relevant: [s_e3d1dee3]
+  note: This article covers the official release of Kling AI version 4.0, matching launch story s_e3d1dee3.
+
+q_eca50043:
+  relevant: []
+  note: This article covers a new Princeton-led research paper on AI agent evaluation methodology and auditing costs, not present in the candidate pool.
+
+q_1cf4521b:
+  relevant: []
+  note: The paper introduces SPRA, a structured paper representation for AI agents, which is a new research development not covered in candidate stories.
+
+q_08920098:
+  relevant: []
+  note: This news item reports on Anthropic adding gzip and faster cloud sessions to Claude Code, a new feature update with no candidate in the pool.
+
+q_8c1ab348:
+  relevant: []
+  note: Google's release of Chrome DevTools 154 with AI agent controls is a new product release not covered by candidate stories.
+
+q_fb933477:
+  relevant: []
+  note: The release of llm-d 1.0 for distributed AI inference is a new open-source software release not covered by candidate stories.
+
+q_b360239c:
+  relevant: []
+  note: This newsletter reports on Accenture capping employee Claude spend at $29, a new development not present in candidate stories.
+
+q_c3d228d5:
+  relevant: []
+  note: This paper presents an evaluation of corpus scaling and document representation for biomedical RAG, a new study not covered by candidate stories.
+
+q_23c7f7b3:
+  relevant: []
+  note: Amazon's announcement of TorchNeuron for running PyTorch natively on Trainium accelerators is a new release not present in candidate stories.
+
+q_47f9369a:
+  relevant: []
+  note: This Hacker News launch post announces Laminar's release of flow-1 for catching silent agent failures, a new model release with no candidate in the pool.
+
+q_efbf84c2:
+  relevant: [s_c40a1477]
+  note: This article covers pricing and operational costs for Laminar's newly launched flow-1 model, matching story s_c40a1477.
+
+q_806e7c8e:
+  relevant: [s_c40a1477, s_f68211d9]
+  note: This AI Weekly article reports on the release of Laminar's flow-1 model, matching duplicate launch stories s_c40a1477 and s_f68211d9.
+
+q_0e4d8b8c:
+  relevant: []
+  note: IFS Softeon's launch of Fulfillment Flow for warehouse management is a new product release not covered by candidate stories.
+
+q_f6feab32:
+  relevant: []
+  note: This post summarizes a new JetBrains research paper on developer task flows in coding-agent benchmarks, not covered in candidate stories.
+
+q_97a222a2:
+  relevant: []
+  note: This post describes a separate kitchen-systems client case study, which is a new project narrative distinct from story s_9974a7d6.
+
+q_aacf1af1:
+  relevant: []
+  note: DeepSeek open-sourcing DeepInfer, its in-house inference serving framework, is a new software release not present in candidate stories.
+
+q_5f906f9d:
+  relevant: [s_ff579b04]
+  note: This post shares and analyzes Zhihu performance and cost figures for the DeepInfer release announced in story s_ff579b04.
+
+q_1ec82458:
+  relevant: [s_ff579b04]
+  note: This post analyzes DeepSeek's DeepInfer release details and Zhihu numbers, matching story s_ff579b04.
+
+q_9e96921b:
+  relevant: []
+  note: The announcement of tsrs, a Rust port of the TypeScript compiler by VoidZero, is a new open-source project not covered by candidate stories.
+
+q_42f210a7:
+  relevant: []
+  note: This post announces 12-hour extended prompt caching for persistent agents in the OpenAI API, a new feature not covered by candidate stories.
+
+q_4a107e9e:
+  relevant: []
+  note: This post discusses General Compute and Positron's split-silicon inference architecture and Asimov chip, a new hardware development not in the pool.
+
+q_8e8b7884:
+  relevant: []
+  note: Mistral's release of Voxtral 3 Transcribe and Speech models for voice agents is a new product launch not covered by candidate stories.
+
+q_d7981fb6:
+  relevant: []
+  note: This post announces team tasks for automating recurring engineering work in ChatGPT, which is a new feature not present in candidate stories.
+
+q_2f528e2d:
+  relevant: []
+  note: This post shares independent architectural advice for using Firecracker microVM snapshotting in agent loops, a distinct topic not covered by candidate stories.
+
+q_0afc6036:
+  relevant: []
+  note: This post discusses safety refusal issues when using Claude Opus 5.5 for content production, which is an independent user commentary and not part of any candidate story.
+
+q_d77ef70a:
+  relevant: []
+  note: This post announces the release of Folio AI v0.178.0 with a unified image engine, which is a new release not present in candidate stories.
+
+q_152a108b:
+  relevant: []
+  note: This post announces tiered model discounts including MiMo-V2.6-Flash and Qwen3.8-Flash, which is a new pricing development not covered in candidate stories.
+
+q_fbcb61c1:
+  relevant: []
+  note: This post announces Chronicle's launch of UBQT, an audience intelligence model, which is a new development not present in candidate stories.
+
+q_41f6fb62:
+  relevant: []
+  note: This post announces Neura Robotics' Neuron AI multimodal foundation model for physical robotics, a new model release not present in candidate stories.
+
+q_0857f4b8:
+  relevant: []
+  note: This release announces Pydantic AI v2.59.0 fixing GHSA-4whf-38hw-pxxh, which is a new version release not present in candidate stories.
+
+q_c0463016:
+  relevant: []
+  note: Pydantic AI v1.107.9 is a maintenance release for the v1 branch, which constitutes a different release from v2.59.0 and earlier v1 patches.
+
+q_88d36e9c:
+  relevant: []
+  note: Google Gen AI Python SDK v2.32.0 is a new minor version release with no 2.32.x candidate in the pool.
+
+q_451e6e0e:
+  relevant: []
+  note: Anthropic Python SDK v1.17.0 is a new minor release with no 1.17.x candidates present in the pool.
+
+q_06359bc6:
+  relevant: []
+  note: Anthropic Python SDK v1.16.0 is a new minor release with no 1.16.x candidates present in the pool.
+
+q_0c6c7ea8:
+  relevant: [s_ff579b04]
+  note: This article covers DeepSeek's open-source release of the DeepInfer inference framework, matching story s_ff579b04.
+
+q_609b9544:
+  relevant: []
+  note: NVIDIA's launch of the OpenShell Reference Architecture for safe AI agents is a new product launch not present in candidate stories.
+
+q_4ab9e0c1:
+  relevant: []
+  note: JFrog's unveiling of AI-SEC during SwampUp is a new product launch distinct from earlier general supply chain announcements.
+
+q_07c7cb13:
+  relevant: []
+  note: Mastercard's demonstration of Agent Pay for Machines at Cloudflare Connect is a new product development not covered in candidate stories.
+
+q_d03069f8:
+  relevant: [s_ff579b04, s_5e9fa8b7]
+  note: This article reports on DeepSeek open-sourcing its DeepInfer inference framework, matching duplicate stories s_ff579b04 and s_5e9fa8b7.
+
+q_253dec52:
+  relevant: []
+  note: Couchbase's AI Data Plane release adding managed AI memory and Bedrock caching is a new product launch not present in candidate stories.
+
+q_5aab135f:
+  relevant: []
+  note: This AWS architectural blog post demonstrates building a semantic layer using AtScale and Bedrock AgentCore, representing a distinct tutorial rather than a core platform announcement.
+
+q_2327473e:
+  relevant: []
+  note: Cognitum One's commercial launch of RuVector self-learning vector database is a new product release not covered in candidate stories.
+
+q_351c4724:
+  relevant: [s_ff579b04, s_5e9fa8b7]
+  note: This DEV Community article analyzes DeepSeek's open-source release of the DeepInfer inference engine, matching duplicate stories s_ff579b04 and s_5e9fa8b7.
+
+q_91ec0618:
+  relevant: [s_97281ec6]
+  note: This article covers the data layer economics behind the AI Data Plane release, matching story s_97281ec6.
+
+q_a7612b14:
+  relevant: []
+  note: This post announces OpenAI's Patch the Planet initiative finding critical vulnerabilities in the PHP engine, a new security disclosure not present in candidate stories.
+
+q_98dfcb19:
+  relevant: []
+  note: This post announces a drug discovery research lead on Perry syndrome using GPT-Rosalind, which is a new experiment distinct from earlier model listing sightings.
+
+q_c0b513fa:
+  relevant: []
+  note: This post details a delivery orchestration rebuild case study, which is a new client project narrative distinct from prior Velocity case studies.
+
+q_bf07de87:
+  relevant: [s_afa200c7]
+  note: This post is a reaction quoting OpenAI's disclosure of PHP engine security vulnerabilities found with GPT-5.6 Sol, matching launch story s_afa200c7.
+
+q_74af75b4:
+  relevant: []
+  note: The release of Flint, a 40B open-weight coding model by Recursive SI, is a new model launch not present in candidate stories.
+
+q_9da70996:
+  relevant: [s_afa200c7]
+  note: This post shares a Codex verification skill for the PHP engine vulnerability announced in story s_afa200c7.
+
+q_3d68bf7a:
+  relevant: []
+  note: Claude Security continuous repository scanning on Claude Enterprise is a new feature launch not present in candidate stories.
+
+q_33e73192:
+  relevant: [s_53d11e1d]
+  note: This post quotes Factory's announcement of Jira delegations for Droids, matching story s_53d11e1d.
+
+q_8798ba56:
+  relevant: [s_afa200c7]
+  note: This post comments on and quotes OpenAI's Patch the Planet disclosure of critical PHP vulnerabilities, matching story s_afa200c7.
+
+q_1a9f2678:
+  relevant: []
+  note: This announcement introduces the research preview of Claude Duet, a new proactive agent app, starting a new story not present in candidate stories.
+
+q_d4317a01:
+  relevant: [s_e4f4b052]
+  note: This post reacts to Anthropic's announcement of Claude Duet, matching launch story s_e4f4b052.
+
+q_bb5fc560:
+  relevant: []
+  note: This post announces OpenAI models and Codex coming to Google Cloud's Model Garden, a new partnership development not present in candidate stories.
+
+q_53a29aac:
+  relevant: []
+  note: This post showcases an independent project using Gemini 4 Argon for 3D human anatomy visualization, representing a new story not present in candidate stories.
+
+q_83a121e9:
+  relevant: [s_afa200c7]
+  note: This post discusses the PHP remote code execution vulnerability and leaked exploit details, matching security incident story s_afa200c7.
+
+q_bcb2833a:
+  relevant: []
+  note: This post announces MiniCPM-V 4.7 running locally on iPhone 18 Pro Max at 20 tokens per second, a new release not present in candidate stories.
+
+q_ab7f312d:
+  relevant: []
+  note: This post shares user experiences and prompt workflows with Kimi K3, representing an independent commentary not covered by candidate stories.
+
+q_b3410191:
+  relevant: []
+  note: This post announces the launch and pricing of Inception's Mercury 3 diffusion LLM, a new model release not covered by candidate stories.
+
+q_6c892fd9:
+  relevant: []
+  note: This post announces Web4's token-based GPU rental platform, a new project launch not covered by candidate stories.
+
+q_1b8629fb:
+  relevant: []
+  note: This post shares an independent case study of using Inngest to build a durable support agent, representing a new story not present in candidate stories.
+
+q_530be04d:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0, s_92fc43ea, s_f646208a]
+  note: langgraph-cli 0.4.40 is a patch release in the 0.4 minor series, matching earlier 0.4.x patch release stories.
+
+q_111e92a3:
+  relevant: [s_649b24b8, s_d9bcd67f, s_9d5378a7, s_0375a4f0, s_92fc43ea, s_f646208a, s_2f460367]
+  note: langgraph-cli 0.4.39 is a patch release in the 0.4 minor series, matching earlier 0.4.x patch release stories.
+
+q_770404c2:
+  relevant: []
+  note: OpenAI Python SDK v3.38.0 is a new minor release with no 3.38.x candidates present in the pool.
+
+q_fe1d9038:
+  relevant: [s_e3d1dee3]
+  note: This article provides detailed coverage of Kling 4.0 capabilities and features, matching launch story s_e3d1dee3.
+
+q_6a8e43d6:
+  relevant: []
+  note: This article reports on a new HKU benchmark study evaluating visual quality and safety safeguards in Chinese video models, a new development not present in candidate stories.
+
+q_1a154f3c:
+  relevant: []
+  note: This article covers the ScholarEvolve research framework for AI agents rewriting their own code from papers, starting a new story not present in candidate stories.
+
+q_3e7d32d7:
+  relevant: []
+  note: This paper introduces benchmarking and fine-tuning LLMs for domain-specific materials science applications, a new research development not covered in candidate stories.
+
+q_a2750a39:
+  relevant: []
+  note: This article reports on Nvidia's RTX Spark software updates for laptops, a new product development not covered in candidate stories.
+
+q_a1eb570d:
+  relevant: []
+  note: This article reports on OpenAI restarting model training after AI agents exposed a Brotli compression vulnerability, a new security event not covered in candidate stories.
+
+q_5a17d37e:
+  relevant: []
+  note: This article introduces Artificial Analysis' Code2Video-AA benchmark for evaluating models on video generation briefs, a new benchmark not present in candidate stories.
+
+q_ab0ae2b5:
+  relevant: [s_581d634e]
+  note: This paper covers the GPUmatLLM workflow for fine-tuning materials science models, matching story s_581d634e.
+
+q_0ae6642a:
+  relevant: []
+  note: This article introduces Ambarella's X7 edge AI accelerator chip, a new hardware announcement not present in candidate stories.
+
+q_2cb9e68a:
+  relevant: []
+  note: This post shares an independent case study of rebuilding a FedEx delivery orchestration billing engine, representing a new story not present in candidate stories.
+
+q_0ce44250:
+  relevant: []
+  note: This post announces the availability of DeepSeek V4.1 Flash in Cursor, a new integration announcement not present in candidate stories.
+
+q_20ca50f0:
+  relevant: []
+  note: This post announces the launch of The Agent SDK for defining agents in Markdown and TypeScript, a new developer tool not covered in candidate stories.
+
+q_5867e8b5:
+  relevant: []
+  note: This post announces the open-weight release of Skywork's Matrix-Game 4.0 real-time game world model, a new model launch not present in candidate stories.
+
+q_8ed0d8cd:
+  relevant: []
+  note: This post showcases Jan v0.8.7, an open-source offline ChatGPT alternative, representing a new project release not covered in candidate stories.
+
+q_0c1ff146:
+  relevant: []
+  note: This post describes an independent developer project building a Mario Kart-style game with Codex and Claude Code, representing a new story not present in candidate stories.
+
+q_be65a305:
+  relevant: []
+  note: This post announces Google Cloud's A5X instances powered by NVIDIA Vera Rubin GPUs, a new infrastructure announcement not covered in candidate stories.
+
+q_1f8ab9ed:
+  relevant: []
+  note: Pydantic AI v2.62.0 is a new minor release with no 2.62.x candidates present in the pool.
+
+q_36bcb706:
+  relevant: [s_d7c848c6, s_608f845c]
+  note: langgraph 1.2.18 is a patch release in the 1.2 minor series, matching earlier 1.2.x patch stories s_d7c848c6 and s_608f845c.
+
+q_9c2776f4:
+  relevant: [s_4a4c1b1d, s_3e7fd077]
+  note: langgraph-sdk 0.4.10 is a patch release in the 0.4 minor series, matching earlier 0.4.x patch release stories s_4a4c1b1d and s_3e7fd077.
+
+q_dc0a97dc:
+  relevant: []
+  note: OpenAI Python SDK v3.39.0 is a new minor release with no 3.39.x candidates present in the pool.
+
+q_bf3b7200:
+  relevant: []
+  note: This article introduces Auto-Research Arena, a new benchmark for evaluating autonomous research systems in language modeling, not present in candidate stories.
+
+q_66424a2e:
+  relevant: []
+  note: This article covers Cadence's introduction of Maestro specialized AI models for chip design, a new product announcement not present in candidate stories.
+
+q_93f45bf2:
+  relevant: []
+  note: This post announces Nebius and NVIDIA's release of Physical AI Workbench for robotics development, a new framework not present in candidate stories.
+
+q_d95f8440:
+  relevant: []
+  note: This article reports on Thomas Dohmke launching Entire and its Trails review system for AI agents, a new company launch not present in candidate stories.
+
+q_cca95ca4:
+  relevant: [s_284896f0]
+  note: This article reports on Thomas Dohmke's launch of Entire, an AI-native Git forge, matching launch story s_284896f0.
+
+q_a9ebd8eb:
+  relevant: []
+  note: This article details Eon's collaboration with NVIDIA for NL-to-SQL on backup data using Nemotron, a new partnership case study not present in candidate stories.
+
+q_67cff725:
+  relevant: []
+  note: This article announces Braiin's launch of Force AI orchestration for the RADIUS CCaaS platform, a new product launch not present in candidate stories.
+
+q_8f5e97c4:
+  relevant: []
+  note: This article announces Chaoyan Intelligence releasing 36 AI-generated scientific research outputs, a new development not present in candidate stories.
+
+q_de5aaf98:
+  relevant: []
+  note: This article covers IBM's announcement of new agent management capabilities in watsonx Orchestrate at TechXchange 2026, a new feature release not covered in candidate stories.
+
+q_bdb233b0:
+  relevant: []
+  note: This post shares impressions of maya-2, a voice AI model developed by Maya Research in India, representing a new model release not present in candidate stories.
