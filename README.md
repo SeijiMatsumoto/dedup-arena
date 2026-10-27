@@ -1,202 +1,146 @@
 # Retrieval Arena
 
-Is RAG dead? Depends on the task, so I'm measuring it on a real one.
+**Does my news feed find the story a new article belongs to? I tested 8 retrieval setups on 470
+real items from my own product to find out.**
 
-This repo compares retrieval strategies (BM25, ten embedding setups, hybrid fusion, rerankers,
-"just put everything in the context window", and an agent with a search tool) on **470 real items
-of dedup traffic from [enable-ai](#where-the-data-comes-from)**, my AI-engineering news product.
-Each one is scored on retrieval quality, end-to-end accuracy, latency, and cost.
-
-The first finding came from scoring production itself: **a third of the items that belonged to an
-existing story became duplicate stories**, and about half of those never reached the matching model
-because a cosine-distance cutoff was too tight. Any of the off-the-shelf embedding setups here
-retrieves the right story far more often.
-
-The task: a new post, article, or GitHub release arrives. Does it cover a story we already have
-(attach it), or is it a new development (start a story)? Get it wrong one way and the feed shows
-duplicates. Get it wrong the other way and unrelated news gets merged.
-
-It's the retrieval half of [decision-arena](../decision-arena), which compares the models that
-make the final call. Here, the question is whether the right story even reaches that model.
+[enable-ai](#where-the-data-comes-from) is my AI-engineering news product. Every new post, article,
+or GitHub release has to be matched to an existing story or start a new one. Miss the match and
+the feed shows the same news twice. This repo measures how well different retrieval methods
+find the right story, how fast, and at what cost, so the choice is based on data, not vibes.
 
 <!-- snapshot:start -->
-## Latest results
-
-**[2026-10-27 snapshot](snapshots/2026-10-27_2053/)**: Use **hybrid-voyage** (recall@5 96%, right story first 82%, 245ms median, $0.0118 per 1k). Production today (its logged decisions): 90.9% correct end to end; 31% of items that belong to an existing story became a duplicate story, and 2% of all items were merged into the wrong story. Production's logged candidates contained the right story for 84.5% of matching items, so 15% never reached the judge. openai-3-large reaches 97.3% (paired McNemar p=0.0005).
-
-Full tables, scenario breakdowns and the distance-cutoff sweep are in the snapshot; all runs are listed in [`snapshots/`](snapshots/).
+**→ Latest results: [2026-10-27 snapshot](snapshots/2026-10-27_2053/)** (full tables, per-scenario breakdown, and the distance-cutoff sweep). All runs: [`snapshots/`](snapshots/).
 <!-- snapshot:end -->
 
-## Status
+## What I found
 
-| Part | State |
+1. **Production was creating duplicates.** Of the items that belonged to an existing story,
+   **31% became a duplicate story** anyway.
+2. **About half of that was retrieval.** The right story wasn't even among the candidates for
+   **15%** of those items, so the model making the final call never had a chance.
+3. **The cause was a cutoff that was too strict.** Production only considered stories within
+   cosine distance 0.10. Loosening it to **0.20** finds the right story **97%** of the time,
+   up from 79%.
+4. **Any modern embedding model fixes it.** Every embedding model tested gets the right story into
+   the top 5 about 97% of the time. OpenAI's `text-embedding-3-large` puts it *first* most often (93%).
+
+| Retriever | Right story in top 5 | Right story first | Median latency | Cost per 1k items |
+|---|---:|---:|---:|---:|
+| OpenAI text-embedding-3-large | 97.3% | 93% | 396 ms | $0.025 |
+| Qwen3 Embedding 8B | 97.3% | 90% | 688 ms | $0.002 |
+| Gemini Embedding 2 | 97.3% | 83% | 610 ms | $0.037 |
+| BM25 + Voyage 4 (hybrid) | 96.4% | 82% | 245 ms | $0.012 |
+| Voyage 4 | 95.5% | 89% | 245 ms | $0.012 |
+| BM25 (keyword search, no AI) | 94.6% | 78% | 1 ms | $0 |
+| **Production, as logged** | **84.5%** | 81% | n/a | n/a |
+| **Production's query, replayed** | **78.6%** | 79% | 610 ms | $0.037 |
+
+*Measured on the 112 items that belong to an existing story. The gap between production and the
+others is statistically significant (paired McNemar test, p < 0.001).*
+
+## Is RAG dead?
+
+That's the next run. The arena also includes **long context** (skip retrieval, give an LLM every
+story at once) and an **agent** that searches on its own. It also includes rerankers and a
+corpus-size sweep that shows when long context stops being worth it. They're configured and tested
+but not yet run on the full data (about $4 of API credit).
+
+| Part | Status |
 |---|---|
-| Dataset + labels (470 items) | Done |
-| Retrieval metrics: production (logged + replay), BM25, Gemini, OpenAI-large, Voyage, Qwen, hybrid-voyage | Done (in the snapshot) |
-| Production's own end-to-end accuracy, from its logs | Done |
-| Distance-cutoff sweep | Done |
-| Remaining embedding setups, rerankers, end-to-end through Jev | Next run (~$1.50 of API credit) |
-| Long context, agentic search, corpus-size sweep: the "is RAG dead?" part | Next run (~$2.50) |
+| Dataset + labels (470 items) | ✅ Done |
+| Retrieval quality: production, BM25, 4 embedding models, hybrid | ✅ Done |
+| Production's real end-to-end accuracy (from its logs) | ✅ Done |
+| Distance-cutoff sweep | ✅ Done |
+| More embedding setups, rerankers, end to end through the decision model | ⏳ Next run |
+| Long context vs. retrieval, agentic search, corpus-size sweep | ⏳ Next run |
 
-## Setup
+## How it works
+
+1. **Real data, replayed in order.** Each item searches only the stories that existed when it
+   arrived (median 293 of 491), exactly as production saw them. No peeking at the future.
+2. **Every method gets the same question:** given this item, which existing stories might it
+   belong to? Most return a ranked top 5. Long-context and agentic methods give a final answer.
+3. **End to end** (next run): the top 5 go to a decision model (`typesafe/jev-1.14`, the one
+   enable-ai uses), which picks a story or says "new". That measures what actually ends up
+   in the feed.
+4. **Scored on quality, speed, and cost together,** with fixed rules that pick a recommendation
+   ([`recommend.py`](src/retrieval_arena/recommend.py)). The same report always gives the same answer.
+
+| Family | What's compared |
+|---|---|
+| Production | What enable-ai does today: the exact logged candidates, plus a re-implementation of its query (subject match **or** Gemini cosine distance ≤ 0.10, top 5) |
+| Keyword | BM25 |
+| Embeddings | Gemini Embedding 2 (three ways of choosing what text to embed), OpenAI 3 small/large, Voyage 4 / 4 lite, Qwen3 8B, BGE-M3 |
+| Hybrid | BM25 + embeddings, fused with reciprocal rank fusion |
+| Rerank | Hybrid top 25 re-ordered by Cohere Rerank 4 or Voyage Rerank 2.5 |
+| Long context | No retrieval: every story in one prompt (Claude Haiku 5.5, GPT-6 Luna, Gemini 3.5 Flash-Lite) |
+| Agentic | An LLM that runs up to 3 searches, then answers |
+
+Every contender is one entry in [`retrievers.yaml`](retrievers.yaml).
+
+## Run it yourself
 
 ```bash
 uv sync
-cp .env.example .env   # add OPENROUTER_API_KEY
+cp .env.example .env        # add OPENROUTER_API_KEY (one key covers every model)
+
+uv run arena list           # contenders and dataset
+uv run arena run            # everything enabled, end to end
+uv run arena run --retrievers bm25,voyage-4 --limit 50   # a quick slice
+uv run arena run --no-e2e   # retrieval metrics only
+uv run arena scale --retrievers lc-haiku-5.5,hybrid-voyage --sizes 50,150,all
+uv run arena snapshot       # save the latest run under snapshots/
+uv run pytest               # offline tests, no key needed
 ```
 
-Every model (embeddings, rerankers, LLMs, the Jev decision model) goes through OpenRouter, so one
-key covers everything.
-
-```bash
-uv run arena list                          # retrievers + datasets
-uv run arena run                           # every enabled retriever, full end-to-end
-uv run arena run --retrievers bm25,voyage-4,hybrid-gemini --limit 50
-uv run arena run --no-e2e                  # retrieval metrics only, no judge calls
-uv run arena run --misses                  # print items most retrievers got wrong
-uv run arena scale --retrievers lc-haiku-5.5,hybrid+voyage-rerank-2.5 --sizes 50,150,all
-uv run arena show                          # re-print the latest report
-uv run arena snapshot                      # save latest run (+ scale run) under snapshots/
-uv run arena run --retrievers mock-good,mock-weak,bm25 --no-e2e   # offline, no key needed
-```
-
-Each run writes `reports/run-<timestamp>.json` plus an `.html` page with the scatter plots, the
-cutoff sweep and a per-item grid. Every API response is cached in `.cache/`, keyed on the exact
-request, so rerunning or adding one retriever only pays for what's new.
-
-## What gets compared (`retrievers.yaml`)
-
-| Family | Retrievers | What it tests |
-|---|---|---|
-| Production | `production-logged`, `production-replay` | What enable-ai does today. *Logged* is the exact candidate list production retrieved, read from its logs. *Replay* re-implements the query: subject identity **or** Gemini cosine distance ≤ 0.10, identity first, version guard, top 5. |
-| Lexical | `bm25` | The 1990s baseline everyone should beat. |
-| Dense | `gemini-emb-2` (+ `-full`, `-meta`), `openai-3-small/large`, `voyage-4`, `voyage-4-lite`, `qwen3-embed-8b`, `bge-m3` | Embedding model choice, and *what text to embed* (raw item vs. extracted subject/version vs. both). |
-| Hybrid | `hybrid-gemini`, `hybrid-voyage` | BM25 + dense fused with reciprocal rank fusion. |
-| Rerank | `hybrid+cohere-4-fast/pro`, `hybrid+voyage-rerank-2.5` | Hybrid top 25 reordered by a cross-encoder. |
-| Long context | `lc-haiku-5.5`, `lc-gpt-6-luna`, `lc-gemini-3.5-flash-lite` | **No retrieval.** Every eligible story goes into one prompt and the LLM picks. The "RAG is dead" position. |
-| Agentic | `agent-haiku-5.5` | An LLM that calls a hybrid search tool up to 3 times, then answers. |
-
-Adding a contender is one YAML entry. Composites refer to other entries by name.
-
-## How it's scored
-
-**Time travel.** Each item only searches the stories that existed when it arrived (median ~290
-of 491), and never the story it created itself. No retriever gets to see the future.
-
-**Retrieval metrics**, on items that belong to an existing story:
-- **Recall@k**: is at least one right story in the top k? Recall@5 matters most, because
-  production passes 5 candidates on to the judge.
-- **MRR, nDCG@10**: how high the right story ranks.
-
-**End to end**, on every item: the top 5 go to a decision model (`typesafe/jev-1.14`, the same
-one enable-ai uses) with the grouping policy. It picks a story, or none. Long-context and
-agentic retrievers make that call themselves.
-- **Accuracy**, split into **attach** and **new**.
-- **Dupes**: items that belong to a story but became a new one.
-- **Wrong merge**: items attached to a story that doesn't cover them.
-- **Latency** (p50/p95, retrieval + judge, client round trip) and **cost per 1k items**.
-
-**`production-actual`** scores the decisions enable-ai actually made, from its logs, against the
-same labels. That's the bar to beat.
-
-**Cutoff sweep.** For each dense retriever: recall@5 and the number of candidates passed on, as a
-function of the cosine-distance cutoff. This answers whether production's 0.10 is too tight.
-
-**Corpus size** (`arena scale`). The same queries rerun with each item's eligible stories cut to N
-(the right ones always kept). Shows how long-context accuracy, latency, and cost move as the
-corpus grows, compared with retrieval.
-
-## Takeaways
-
-`recommend.py` turns a report into picks with fixed rules and no LLM:
-
-1. **Contenders:** within 2 points of the best end-to-end accuracy, and not significantly worse by a
-   paired exact McNemar test (p < 0.05).
-2. **Use:** the contender with the best combined cost + latency rank.
-3. **Avoid:** significantly worse than the best, or had failed calls.
-4. **Notes:** production today vs. the best, what the 0.10 cutoff costs, the smallest cutoff that
-   keeps full recall, long context vs. retrieval (accuracy, speed, and cost ratios with a
-   significance test), the best embedding setup, reranker gains, and weak scenario tags.
-
-`production-logged` is never a pick: it's a log replay, not something you can deploy.
+Every API response is cached on disk, so rerunning, or adding one new retriever, only pays for
+what's new. Each run also writes an HTML report with charts and a per-item grid.
 
 ## Where the data comes from
 
-The dataset was exported read-only from enable-ai's production database (the export script is kept
-private because it encodes the product's schema):
+470 items and 491 stories were exported read-only from enable-ai's production database. The
+export script stays private because it encodes the product's schema.
 
-- **Corpus (`corpus.jsonl`)**: every Story, represented by its *discovery* item as it was when the
-  Story was created. The Story's later AI summary is deliberately not used: it was written from
-  evidence that includes the queries themselves, which would leak the answer.
-- **Queries (`queries.raw.jsonl`)**: every item that went through story matching and was applied
-  (attached, or started a new story), with the candidates production retrieved and what it decided.
+- **Stories** ([`corpus.jsonl`](datasets/story_dedup/corpus.jsonl)) as they looked when first
+  created. Their later AI-written summaries are left out because they were built from the very items
+  being tested, which would leak the answer.
+- **Items** ([`queries.raw.jsonl`](datasets/story_dedup/queries.raw.jsonl)): every item that went
+  through story matching, with what production retrieved and decided.
+- Only public material: titles, subjects, URLs, and short excerpts of public posts, articles,
+  and releases. Ids are opaque handles, and nothing is user-specific.
 
-Only public material is exported: titles, extracted subjects/versions, URLs, and a ≤700-char excerpt
-of each public post, article, or release. Ids are short opaque handles, not database keys. Nothing
-user-specific.
+## How the labels were made
 
-## Labels
+Production's own decisions can't be the answer key, because the point is to find where
+production is wrong. So:
 
-Production's own decisions can't be the ground truth, because the point is to find where
-production is wrong. Labels are built TREC-style:
+1. **Pool candidates.** For each item, collect the top 8 stories from five different retrievers,
+   plus everything production retrieved.
+2. **Label blind.** A model picks the matching stories using one written
+   [grouping policy](datasets/story_dedup/task.yaml), without seeing production's decision.
+   Claude Sonnet 5.5 labeled 274 items through the API. Gemini CLI labeled the other 196 from the
+   same candidate lists.
+3. **Cross-check with production.** Where the labeler and production agree, that's the label (398
+   items). Where they disagree (72 items), a model from a different vendor reads the case and
+   decides, with a one-line reason in [`adjudications.yaml`](datasets/story_dedup/adjudications.yaml).
+   Decisions were spot-checked by hand.
 
-1. **Pool:** for each item, the union of the top 8 from five diverse retrievers (BM25, Gemini,
-   OpenAI, Voyage, Qwen embeddings) plus every candidate production retrieved and the story it
-   chose. The pool is listed chronologically, so the judge can't see any retriever's ranking.
-2. **Labeler:** a model picks the matching stories from the pool by one written grouping policy
-   ([`task.yaml`](datasets/story_dedup/task.yaml)). The policy restates the rules enable-ai's matcher
-   follows in plain terms. The same policy goes to the decision model and the LLM retrievers, so
-   everything is graded against one rule. The labeler never sees production's decision.
-   - 274 items: Claude Sonnet 5.5 through the API (`arena label`; raw verdicts in `judgments.jsonl`).
-   - 196 items: Gemini CLI working from the same pools (`arena label --sheet` writes them as Markdown;
-     answers in `agent/agent_labels.yaml`). Same policy, no API spend.
-3. **Second opinion:** what production actually decided. Where the labeler and production agree,
-   that's the label (`judge+production`, 398 items). Where they disagree, which is exactly where the
-   interesting errors are, the case goes to [`review.md`](datasets/story_dedup/review.md) and a model
-   from another vendor decides it with a one-line note in
-   [`adjudications.yaml`](datasets/story_dedup/adjudications.yaml) (`reviewed`, 72 items: Gemini CLI
-   reviewed Sonnet's 43, Codex reviewed Gemini's 29). Decisions were spot-checked by hand.
-
-Reviewers didn't just pick a side by default: Gemini sided with Sonnet 31 times and with production 11 times. Codex
-leaned harder toward its labeler (25 vs. 2), so treat the second batch's review as lighter.
-
-Commands: `uv run arena label` (API judge, ≈$0.012 per item, cached), `uv run arena label --sheet`
-(pools for a coding agent, free), `uv run arena label --merge-only` (rebuild `queries.jsonl` from
-saved verdicts and adjudications, free).
+The same policy is given to every LLM in the arena, so everything is graded against one rule.
 
 ## Caveats
 
-- **Labels are model judgments,** checked against production's decisions, with every disagreement
-  reviewed by a second model. They are not independent human annotation, and two different
-  labelers were used (see [Labels](#labels)). Where the labeler and production make the *same*
-  mistake, the label is wrong too, and that error favors production, so production's
-  numbers here are, if anything, flattering. Spot-check `queries.jsonl`.
-- **Pooling bias:** a right story that no pooled retriever ranked in its top 8 was never judged.
-  Production's candidates are always pooled, so this can't hide a story production *found*. It
-  could hide one everybody missed.
-- **Replay is approximate.** Production embeds a story as the centroid of all its items so far.
-  Here a story is its discovery item. `production-logged` is the exact record; `production-replay`
-  shows the query logic with today's embedding API.
-- **One task, one corpus.** ~470 items and ~490 stories from one product's AI-news feed. The
-  conclusions are about this workload, which is the point. Treat gaps of a couple of points as noise
-  (the McNemar test is there for that).
-- **Small corpus for long context.** A few hundred stories fit easily in a 1M-token window. The
-  `scale` run shows the trend, but this repo can't test a million-document corpus.
-- Latency is the client-side round trip from one machine through OpenRouter, so it includes network
-  time and OpenRouter's routing.
+- **Labels come from models, not humans.** They were cross-checked and disputes were reviewed, but
+  where the labeler and production made the *same* mistake, the label is wrong too. That bias
+  favors production, so its numbers here are, if anything, generous.
+- **Pooling blind spot.** A correct story that none of the pooled retrievers found was never
+  labeled. Production's own candidates were always included.
+- **Replay is approximate.** Production represents a story by the average of all its items so
+  far. Here it's the first item. The *logged* row is the exact production record.
+- **One workload.** These conclusions are about this feed, which is the point. With 112 matching
+  items, treat gaps of a couple of points as noise. The significance tests are there for that.
+- Latency is the round trip from one laptop through OpenRouter, so it includes network time.
 
-## Project layout
+## Related
 
-```
-datasets/story_dedup/   task.yaml (policy, pool, judges), corpus.jsonl, queries.jsonl (labeled),
-                        judgments.jsonl, agent/ (agent labels), adjudications.yaml
-retrievers.yaml         every contender
-src/retrieval_arena/
-  retrievers.py         all retriever kinds behind search(query, eligible) -> ranked ids
-  label.py              pooling, API judge, coding-agent sheets, adjudication merge
-  e2e.py                top 5 -> decision model -> attach / new
-  metrics.py            recall@k, MRR, nDCG, cutoff sweep, end-to-end, McNemar
-  recommend.py          deterministic picks and notes
-  runner.py, cli.py, snapshot.py, html_report.py
-snapshots/              dated, committed results
-```
+[decision-arena](https://github.com/SeijiMatsumoto/decision-arena) compares the models that make
+the final "same story or not" call. This repo is about whether the right story reaches them.

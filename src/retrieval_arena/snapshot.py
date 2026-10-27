@@ -117,7 +117,7 @@ def render(report: dict[str, Any], scale: dict[str, Any] | None = None,
                 f"{len(q)} real items from enable-ai ({attach} that belong to an existing story, "
                 f"{len(q) - attach} that start a new one), searched against the stories that existed "
                 f"when each item arrived (median {data['eligible_median']} of {data['n_corpus']}). "
-                f"Labels: {label_text} (see [Labels]({project_readme}#labels)). "
+                f"Labels: {label_text} (see [Labels]({project_readme}#how-the-labels-were-made)). "
                 + (f"End-to-end = top 5 → `{report['judge_model']}` picks a story or none; "
                    "long-context and agentic retrievers decide on their own. "
                    if report.get("judge_model") else
@@ -163,7 +163,7 @@ def render(report: dict[str, Any], scale: dict[str, Any] | None = None,
              + (" End-to-end columns are empty for retrievers this run did not send to the judge."
                 if no_e2e else "")),
             "",
-            f"### Takeaways ([how these are derived]({project_readme}#takeaways))",
+            f"### Takeaways ([how these are derived]({project_readme}#how-it-works))",
             "",
         ]
         rec = recs[name]
@@ -246,12 +246,8 @@ def write_readme_pointer(readme: Path, snapshots_dir: Path) -> None:
     date = datetime.fromisoformat(report["created_at"]).strftime("%Y-%m-%d")
     block = "\n".join([
         START,
-        "## Latest results",
-        "",
-        f"**[{date} snapshot]({rel}/{name}/)**: {headline(report)}",
-        "",
-        (f"Full tables, scenario breakdowns and the distance-cutoff sweep are in the snapshot; all "
-        f"runs are listed in [`{rel}/`]({rel}/)."),
+        (f"**→ Latest results: [{date} snapshot]({rel}/{name}/)** (full tables, per-scenario "
+        f"breakdown, and the distance-cutoff sweep). All runs: [`{rel}/`]({rel}/)."),
         END,
     ])
     text = readme.read_text()

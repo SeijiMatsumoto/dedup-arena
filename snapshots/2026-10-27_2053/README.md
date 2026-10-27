@@ -2,7 +2,7 @@
 
 ## story_dedup
 
-470 real items from enable-ai (112 that belong to an existing story, 358 that start a new one), searched against the stories that existed when each item arrived (median 293 of 491). Labels: 398 judge+production, 72 reviewed (see [Labels](../../README.md#labels)). This run is retrieval-only (no judge calls); `production-actual`'s end-to-end numbers come from production's own logs. Latency is the client round trip from one machine. Raw data: [`report.json`](report.json).
+470 real items from enable-ai (112 that belong to an existing story, 358 that start a new one), searched against the stories that existed when each item arrived (median 293 of 491). Labels: 398 judge+production, 72 reviewed (see [Labels](../../README.md#how-the-labels-were-made)). This run is retrieval-only (no judge calls); `production-actual`'s end-to-end numbers come from production's own logs. Latency is the client round trip from one machine. Raw data: [`report.json`](report.json).
 
 | Retriever | Family | Recall@1 | Recall@5 | MRR | End-to-end | Attach | New | Dupes | Wrong merge | p50 | $ per 1k |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -18,7 +18,7 @@
 
 Recall is measured on the items that belong to an existing story. *Dupes*: items that belong to a story but became a new one. *Wrong merge*: items attached to a story that doesn't cover them. `production-actual` is what enable-ai actually decided (from its logs), scored against the same labels. End-to-end columns are empty for retrievers this run did not send to the judge.
 
-### Takeaways ([how these are derived](../../README.md#takeaways))
+### Takeaways ([how these are derived](../../README.md#how-it-works))
 
 - **Use: hybrid-voyage.** recall@5 96.4%, right story first 82% of the time (MRR 0.89), 245ms median, $0.012 per 1k items.
 - **Most accurate: openai-3-large.** recall@5 97.3%, right story first 93% of the time (MRR 0.95), 396ms median, $0.025 per 1k items.
