@@ -31,7 +31,7 @@ wheels = [
 [[package]]
 name = "arena-kit"
 version = "0.1.0"
-source = { git = "https://github.com/SeijiMatsumoto/arenas.git?subdirectory=kit#d5559f2f87b8acd6ca230cd396f7c76af6427ffc" }
+source = { git = "https://github.com/SeijiMatsumoto/arenas.git?subdirectory=kit#ac3a1f17e6f5370198cd9fdb1286909354f79879" }
 dependencies = [
     { name = "httpx" },
     { name = "jsonschema" },
