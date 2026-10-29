@@ -1,0 +1,18 @@
+# Hand-written metadata for the arenas hub (https://github.com/SeijiMatsumoto/arenas).
+# Edit, then `uv run arena-kit refresh` to re-apply it to snapshots/latest.json.
+name: retrieval-arena
+title: Retrieval Arena
+question: "Which retrieval setup finds the existing story a new item belongs to, so enable-ai's feed doesn't show the same news twice?"
+repo: https://github.com/SeijiMatsumoto/retrieval-arena
+data: 470 real items and 491 stories exported read-only from enable-ai production; scored on items that belong to an existing story.
+labels:
+  source: llm-judge
+  note: Model labels, cross-checked, with disputes reviewed. Where labeler and production made the same mistake the label is wrong too, which favors production.
+outcome:
+  status: pending
+  note: Finding - production's 0.10 cosine cutoff dropped the right story for 15% of matching items; 0.20 recovers most. Link the enable-ai change here once it ships.
+caveats:
+  - Labels come from models, not humans.
+  - A correct story that none of the pooled retrievers found was never labeled.
+  - One workload; with ~110 matching items, treat gaps of a couple of points as noise.
+  - Latency is one laptop through OpenRouter, network included.

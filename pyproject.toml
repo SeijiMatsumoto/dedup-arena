@@ -5,6 +5,7 @@ description = "Compare retrieval strategies (dense, BM25, hybrid, rerank, long c
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+  "arena-kit @ git+https://github.com/SeijiMatsumoto/arenas.git#subdirectory=kit",
   "httpx>=0.28.0",
   "numpy>=2.0.0",
   "pydantic>=2.11.0",
@@ -29,6 +30,9 @@ export = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/retrieval_arena"]

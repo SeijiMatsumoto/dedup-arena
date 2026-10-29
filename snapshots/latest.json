@@ -1,0 +1,125 @@
+{
+  "schema": "arena-summary/1",
+  "arena": {
+    "name": "retrieval-arena",
+    "title": "Retrieval Arena",
+    "question": "Which retrieval setup finds the existing story a new item belongs to, so enable-ai's feed doesn't show the same news twice?",
+    "repo": "https://github.com/SeijiMatsumoto/retrieval-arena"
+  },
+  "snapshot": {
+    "id": "2026-10-27_2053",
+    "created_at": "2026-10-27T20:53:27+00:00",
+    "path": "snapshots/2026-10-27_2053"
+  },
+  "headline": "Use **hybrid-voyage** (recall@5 96%, right story first 82%, 245ms median, $0.0118 per 1k). Production today (its logged decisions): 90.9% correct end to end; 31% of items that belong to an existing story became a duplicate story, and 2% of all items were merged into the wrong story. Production's logged candidates contained the right story for 84.5% of matching items, so 15% never reached the judge. openai-3-large reaches 97.3% (paired McNemar p=0.0005).",
+  "pick": {
+    "name": "hybrid-voyage",
+    "reason": "recall@5 96.4%, right story first 82% of the time (MRR 0.89), 245ms median, $0.012 per 1k items."
+  },
+  "metric": {
+    "name": "recall@5",
+    "label": "Right story in top 5",
+    "higher_is_better": true,
+    "format": "percent"
+  },
+  "contenders": [
+    {
+      "name": "gemini-emb-2",
+      "kind": "dense",
+      "quality": 0.9732142857142857,
+      "latency_ms": 609.5916458871216,
+      "cost_per_1k_usd": 0.03681442553191489,
+      "errors": 0,
+      "verdict": "tied"
+    },
+    {
+      "name": "openai-3-large",
+      "kind": "dense",
+      "quality": 0.9732142857142857,
+      "latency_ms": 395.5567507073283,
+      "cost_per_1k_usd": 0.0247188085106383,
+      "errors": 0,
+      "verdict": "tied"
+    },
+    {
+      "name": "qwen3-embed-8b",
+      "kind": "dense",
+      "quality": 0.9732142857142857,
+      "latency_ms": 688.1694169715047,
+      "cost_per_1k_usd": 0.0021765106382978724,
+      "errors": 0,
+      "verdict": "tied"
+    },
+    {
+      "name": "hybrid-voyage",
+      "kind": "hybrid",
+      "quality": 0.9642857142857143,
+      "latency_ms": 245.269687846303,
+      "cost_per_1k_usd": 0.011843617021276598,
+      "errors": 0,
+      "verdict": "pick"
+    },
+    {
+      "name": "voyage-4",
+      "kind": "dense",
+      "quality": 0.9553571428571429,
+      "latency_ms": 245.269687846303,
+      "cost_per_1k_usd": 0.011843617021276598,
+      "errors": 0,
+      "verdict": "tied"
+    },
+    {
+      "name": "bm25",
+      "kind": "lexical",
+      "quality": 0.9464285714285714,
+      "latency_ms": 1.1304998770356178,
+      "cost_per_1k_usd": 0.0,
+      "errors": 0,
+      "verdict": "other"
+    },
+    {
+      "name": "production-logged",
+      "kind": "production",
+      "quality": 0.8454545454545455,
+      "latency_ms": null,
+      "cost_per_1k_usd": null,
+      "errors": 0,
+      "verdict": "baseline",
+      "note": "Production's logged candidates, as recorded."
+    },
+    {
+      "name": "production-replay",
+      "kind": "production",
+      "quality": 0.7857142857142857,
+      "latency_ms": 609.7996460739523,
+      "cost_per_1k_usd": 0.03681442553191489,
+      "errors": 0,
+      "verdict": "worse",
+      "note": "Production's query, replayed."
+    }
+  ],
+  "data": {
+    "items": 112,
+    "labels": {
+      "source": "llm-judge",
+      "note": "Model labels, cross-checked, with disputes reviewed. Where labeler and production made the same mistake the label is wrong too, which favors production."
+    },
+    "description": "470 real items and 491 stories exported read-only from enable-ai production; scored on items that belong to an existing story."
+  },
+  "method": {
+    "rules": "Tied = within 2% of the best score and not significantly worse (exact McNemar, p < 0.05); pick = best combined cost and latency rank among tied. Score is end-to-end accuracy when the run has it, else recall@5.",
+    "test": "exact McNemar, paired",
+    "alpha": 0.05
+  },
+  "outcome": {
+    "status": "pending",
+    "note": "Finding - production's 0.10 cosine cutoff dropped the right story for 15% of matching items; 0.20 recovers most. Link the enable-ai change here once it ships."
+  },
+  "caveats": [
+    "Labels come from models, not humans.",
+    "A correct story that none of the pooled retrievers found was never labeled.",
+    "One workload; with ~110 matching items, treat gaps of a couple of points as noise.",
+    "Latency is one laptop through OpenRouter, network included."
+  ],
+  "mock": false
+}
