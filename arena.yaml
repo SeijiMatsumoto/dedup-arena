@@ -1,9 +1,9 @@
 # Hand-written metadata for the arenas hub (https://github.com/SeijiMatsumoto/arenas).
 # Edit, then `uv run arena-kit refresh` to re-apply it to snapshots/latest.json.
-name: retrieval-arena
-title: Retrieval Arena
+name: dedup-arena
+title: Dedup Arena
 question: "Which retrieval setup finds the existing story a new item belongs to, so enable-ai's feed doesn't show the same news twice?"
-repo: https://github.com/SeijiMatsumoto/retrieval-arena
+repo: https://github.com/SeijiMatsumoto/dedup-arena
 data: 470 real items and 491 stories exported read-only from enable-ai production; scored on items that belong to an existing story.
 labels:
   source: llm-judge

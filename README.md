@@ -1,4 +1,8 @@
-# Retrieval Arena
+# Dedup Arena
+
+Previously named `retrieval-arena`. The existing study, data, and Git history moved here.
+For general document question answering with long context, RAG, and agentic RAG, see
+[Retrieval Arena](https://github.com/SeijiMatsumoto/retrieval-arena).
 
 **Does my news feed find the story a new article belongs to? I tested 8 retrieval setups on 470
 real items from my own product to find out.**
@@ -38,9 +42,9 @@ find the right story, how fast, and at what cost, so the choice is based on data
 *Measured on the 112 items that belong to an existing story. The gap between production and the
 others is statistically significant (paired McNemar test, p < 0.001).*
 
-## Is RAG dead?
+## Next: compare complete deduplication pipelines
 
-That's the next run. The arena also includes **long context** (skip retrieval, give an LLM every
+The next run measures the final same-story decision. The arena also includes **long context** (skip retrieval, give an LLM every
 story at once) and an **agent** that searches on its own. It also includes rerankers and a
 corpus-size sweep that shows when long context stops being worth it. They're configured and tested
 but not yet run on the full data (about $4 of API credit).
@@ -64,7 +68,7 @@ but not yet run on the full data (about $4 of API credit).
    enable-ai uses), which picks a story or says "new". That measures what actually ends up
    in the feed.
 4. **Scored on quality, speed, and cost together,** with fixed rules that pick a recommendation
-   ([`recommend.py`](src/retrieval_arena/recommend.py)). The same report always gives the same answer.
+   ([`recommend.py`](src/dedup_arena/recommend.py)). The same report always gives the same answer.
 
 | Family | What's compared |
 |---|---|

@@ -1,4 +1,4 @@
-"""Retrieval Arena: compare retrieval strategies on real, labeled dedup queries."""
+"""Dedup Arena: compare retrieval strategies on real, labeled dedup queries."""
 
 from __future__ import annotations
 

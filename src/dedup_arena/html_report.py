@@ -294,8 +294,8 @@ def write_html(report: dict[str, Any], path: Path) -> Path:
     doc = (
         "<!doctype html><html><head><meta charset='utf-8'>"
         "<meta name='viewport' content='width=device-width, initial-scale=1'>"
-        f"<title>Retrieval Arena report</title><style>{CSS}</style></head><body><main>"
-        f"<h1>Retrieval Arena</h1><p class='muted'>Run {esc(report['created_at'])} · "
+        f"<title>Dedup Arena report</title><style>{CSS}</style></head><body><main>"
+        f"<h1>Dedup Arena</h1><p class='muted'>Run {esc(report['created_at'])} · "
         f"judge {esc(report.get('judge_model'))}"
         + (f" · corpus capped at {report['corpus_size']}" if report.get("corpus_size") else "")
         + f"</p>{body}</main><div id='tip'></div><script>{JS}"

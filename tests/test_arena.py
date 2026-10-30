@@ -4,19 +4,19 @@ import json
 import pytest
 import yaml
 
-from retrieval_arena import runner
-from retrieval_arena.datasets import load_dataset
-from retrieval_arena.html_report import write_html
-from retrieval_arena.label import merge_labels
-from retrieval_arena.metrics import cutoff_sweep, e2e_metrics, mcnemar_p, ndcg, retrieval_metrics
-from retrieval_arena.recommend import recommend
-from retrieval_arena.retrievers import (
+from dedup_arena import runner
+from dedup_arena.datasets import load_dataset
+from dedup_arena.html_report import write_html
+from dedup_arena.label import merge_labels
+from dedup_arena.metrics import cutoff_sweep, e2e_metrics, mcnemar_p, ndcg, retrieval_metrics
+from dedup_arena.recommend import recommend
+from dedup_arena.retrievers import (
     Arena,
     RetrieverSpec,
     compatible,
     product_identity,
 )
-from retrieval_arena.snapshot import render
+from dedup_arena.snapshot import render
 
 DOCS = [
     {"id": "s_sdk3", "title": "OpenAI Python SDK 3.0 released", "subject": "OpenAI Python SDK",

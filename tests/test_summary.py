@@ -3,7 +3,7 @@ from pathlib import Path
 
 from arena_kit import contract
 
-from retrieval_arena.summary import build_summary
+from dedup_arena.summary import build_summary
 
 ROOT = Path(__file__).resolve().parents[1]
 

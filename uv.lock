@@ -678,7 +678,7 @@ wheels = [
 ]
 
 [[package]]
-name = "retrieval-arena"
+name = "dedup-arena"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

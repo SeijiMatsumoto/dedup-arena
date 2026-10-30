@@ -1,7 +1,7 @@
 [project]
-name = "retrieval-arena"
+name = "dedup-arena"
 version = "0.1.0"
-description = "Compare retrieval strategies (dense, BM25, hybrid, rerank, long context, agentic) on a real dedup task."
+description = "Compare story deduplication pipelines: candidate retrieval, matching decisions, quality, latency, and cost."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.scripts]
-arena = "retrieval_arena.cli:main"
+arena = "dedup_arena.cli:main"
 
 [dependency-groups]
 dev = [
@@ -35,7 +35,7 @@ build-backend = "hatchling.build"
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/retrieval_arena"]
+packages = ["src/dedup_arena"]
 
 [tool.ruff]
 line-length = 100

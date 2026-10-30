@@ -1,10 +1,10 @@
 {
   "schema": "arena-summary/1",
   "arena": {
-    "name": "retrieval-arena",
-    "title": "Retrieval Arena",
+    "name": "dedup-arena",
+    "title": "Dedup Arena",
     "question": "Which retrieval setup finds the existing story a new item belongs to, so enable-ai's feed doesn't show the same news twice?",
-    "repo": "https://github.com/SeijiMatsumoto/retrieval-arena"
+    "repo": "https://github.com/SeijiMatsumoto/dedup-arena"
   },
   "snapshot": {
     "id": "2026-10-27_2053",
